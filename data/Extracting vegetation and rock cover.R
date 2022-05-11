@@ -6,7 +6,7 @@ library(lubridate)
 library(plotKML)
 library(swfscMisc)
 library(raster)
-# setwd("C:/Users/gavin/Desktop/PhD/Chapter 1 - Vegetation and lizard's performance/Paper/Fixed maps")
+
 setwd("Fixed_maps")
 
 
@@ -37,7 +37,7 @@ rasterOptions(tmpdir="/data2")
 # }
 
 
-Data = read.csv("../Full Databse 20.01.2022.csv", header=T)
+Data = read.csv("lizards_Mi_data_Appendix_S1.csv", header=T)
 #create  spatial points
 sp1 <- SpatialPoints(matrix(c(Data$Longitude,Data$Latitude), ncol=2), proj4string = CRS("+proj=longlat +datum=WGS84"))
 #transform to meters lat and lon
@@ -120,56 +120,4 @@ for (i in 1:length(sp1Transformed)){
 
 library(lubridate)
 write.csv(veg_data, file = paste("Rock_and_Veg_Cover_Results",today(), "csv", sep="." ))
-#############################################################################################################
 
-##r_veg_current <- find_raster_with_coordinate(cords[Data$ID=="GS47",1], cords[Data$ID=="GS47",2], r_veg, size_of_list = 2)
-##plot(r_veg[[r_veg_current]])
-##points(cords[Data$ID=="GS09",1], cords[Data$ID=="GS09",2], pch=19, col="blue")
-###plot(r_veg[[1]], col=c("NA", "green"), add=T)
-
-
-
-
-# veg_percentage_10m = extract(r_veg[[r_veg_current]], cbind(cords[i,1], cords[i,2]), buffer=10, fun=mean)
-# veg_percentage_50m = extract(r_veg[[r_veg_current]], cbind(cords[i,1], cords[i,2]), buffer=50, fun=mean)
-# veg_percentage_100m = extract(r_veg[[r_veg_current]], cbind(cords[i,1], cords[i,2]), buffer=100, fun=mean)
-# #save in data frame
-
-#Data[i,]$file = r_veg[[r_veg_current]]@file@name
-# Data[i,]$fveg10m = veg_percentage_10m
-# Data[i,]$fveg50m = veg_percentage_50m
-# Data[i,]$fveg100m = veg_percentage_100m
-#rgb="D:/OfirL2/Desktop/PhD/Chapter 2 - Vegetation Cover and Life-History of Desert Lizards/Nahal Mishmar - 1.tif"
-#rgb_file = "/home/ofir/eclipse workspace/lab/Gavin/Nahal Mishmar - 1.tif"
-# rgb_files_zeelim = c("/home/ofir/eclipse workspace/lab/Gavin/IX-12-11646_0067_transparent_mosaic_group1.tif",
-#                       "/home/ofir/eclipse workspace/lab/Gavin/IX-12-11646_0072_transparent_mosaic_group1.tif",
-#                       "/home/ofir/eclipse workspace/lab/Gavin/IX-12-11646_0073_transparent_mosaic_group1.tif")
-
-# for (i in 1:3){
-#   r <- stack(rgb_files_zeelim[i])
-#   R = r[[1]]; G = r[[2]]; B= r[[3]]
-#   r_tgi = (G-0.39*R-0.61*B)/max(R, max(G, B))
-#   writeRaster(r_tgi, file=paste0("tgi_zeelim_",i,".tif"))
-# }
-
-# for (i in 2:2){
-#    r_tgi = raster(paste0("tgi_zeelim_",i,".tif"))
-#    r_veg = r_tgi
-#    r_veg[r_tgi>0.04]=1
-#    r_veg[r_tgi<0.04]=0
-#    writeRaster(r_veg, file=paste0("veg_yesno_zeelim",i,".tif"), overwrite=T)
-# }
-# rgb = "/home/ofir/eclipse workspace/lab/Gavin/Nahal Mishmar - 2.tif"
-# r2 <- stack(rgb)
-# m1 <- merge(r2, r)
-# plotRGB(r2)
-# plotRGB(r1, add=T)
-#load points:
-#Data <- read.csv("D:/OfirL2/Desktop/PhD/Chapter 2 - Vegetation Cover and Life-History of Desert Lizards/Nahal Mishmar Coordinates for Analysis.csv")
-#Data = read.csv("/home/ofir/eclipse workspace/lab/Gavin/Nahal Mishmar Coordinates for Analysis.csv")
-#Data = read.csv("/home/ofir/eclipse workspace/lab/Gavin/T'zeelim Coordinates for Analysis.csv")
-#Data = read.csv("/home/ofir/eclipse workspace/lab/Gavin/Coordinates for Analysis 06.02.20.csv")
-#Data = read.csv("/home/ofir/eclipse workspace/lab/Gavin/MyData2_Zeelim.csv")
-radius = 1000 # 100 meters distance
-# scalebar(100,xy = c(cords[i,1], cords[i,2]), label = "100 m", col="white", lwd =6, cex=3)
-#circle <- st_buffer(cords[i,], 100)
