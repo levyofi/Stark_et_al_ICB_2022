@@ -1,0 +1,56 @@
+model {
+  for(i in 1:N) {
+		X[i,1]<-1.0 
+		#main effects for categories
+		X[i,2]<-equals(season[i], 2)				
+		X[i,3]<-(rock[i]-mean(rock[]))/(2*sd(rock[]))
+		#interactions for categories
+		X[i,4]<-(veg[i]-mean(veg[]))/(2*sd(veg[]))
+		X[i,5]<-(svl[i]-mean(svl[]))/(2*sd(svl[]))
+		#X[i,6]<-X[i,2]*X[i,3]
+		#X[i,7]<-X[i,2]*X[i,4]
+		#X[i,6]<-X[i,2]*X[i,5]
+		X[i,6]<-X[i,3]*X[i,4]
+		#X[i,7]<-X[i,3]*X[i,5] # SVL*ROCK				
+		#X[i,9]<-X[i,4]*X[i,5] # SVL*VEG
+		#X[i,12]<-X[i,2]*X[i,9]
+		#X[i,13]<-X[i,2]*X[i,10]
+		#X[i,12]<-X[i,2]*X[i,11]						
+	}
+
+	for(i in 1:N){
+		Mi[i]~dnorm(mu[i],  tau.exp[i])
+		tau.exp[i]<- tau*1/sqrt(exp(X[i,4]*2*delta))
+		mu[i]<- inprod(alpha[2:6],X[i, 2:6]) + Loc[location[i]] #+ X[i,4]*Ind.gud[hz[i]]
+		e.obs[i]<-(Mi[i]-mu[i])/sqrt(sd(Mi[]))
+	}
+	for( c in 1 : 2) {
+		Loc[c]~dnorm(alpha[1], tau.loc)
+	}	
+	tau.loc <- 1 / (sigma.loc * sigma.loc)
+    sigma.loc ~ dunif(0, 10)
+	for (L in 2:6){
+		alpha[L]~dnorm(0.0, 1.0E-3)
+	}
+	alpha[1]~dnorm(0.0, 1.0E-3) I(0.00000001,)
+  delta~dnorm(0, 1E-3)
+#delta[2]~dnorm(0.0, 1.0E-6)
+	#delta[3]~dnorm(0.0, 1.0E-6)
+	tau~dgamma(0.01, 0.01)
+	#tau[2]~dgamma(0.001, 0.001)	
+	#tau[3]~dgamma(0.001, 0.001)		
+	alpha_mean = mean(Loc[])
+	beta.season <- alpha[2]
+	beta.rock  <-  alpha[3]/(2*sd(rock[]))
+	beta.veg  <-  alpha[4]/(2*sd(veg[]))
+	beta.svl  <-  alpha[5]/(2*sd(svl[]))
+	beta.rockveg  <-  alpha[6]/((2*sd(rock[]))*(2*sd(veg[])))
+	#tau.loc~dgamma(0.01, 0.01)
+#	tau.Ind.gud~dgamma(0.001, 0.001)
+  p.val<-2*(1-step(alpha))
+	#Deviance <- -2*sum( l[1:128] )
+	div_veg_rock <- beta.veg/beta.rock
+}
+
+
+
