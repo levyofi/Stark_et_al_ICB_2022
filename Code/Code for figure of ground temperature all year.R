@@ -1,5 +1,5 @@
 ##################################Figure of ground temperature around the year######################
-combined_temps <- read.csv(choose.files())
+combined_temps <- read.csv(choose.files()) ### upload `combined_temps` dataset from Data folder###
 combined_temps$Month <- factor(combined_temps$Month, levels=unique(combined_temps$Month))
 months <- c("January", "February", "March","April","May","June","July","August","September","October","November","December")
 o <- ggplot(combined_temps, aes(Month,mean_temp)) +
