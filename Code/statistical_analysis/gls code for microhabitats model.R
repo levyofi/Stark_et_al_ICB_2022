@@ -1,4 +1,4 @@
-combined_temps <- read.csv("Data/combined_temps_final.csv") # upload dataset
+combined_temps <- read.csv("Data/combined_temps_for_figure_1.csv") # upload dataset
 combined_temps <- combined_temps[combined_temps$Season %in% c("Summer", "Winter"),]
 str(combined_temps) # check that the structure of the table fits the Anova
 
