@@ -23,10 +23,10 @@ names(open_data_merged)[2] <- "Mean Temperatures in the open field"
 names(open_data_merged)[3] <- "Standard error of temps in the open field"
 ###Merge and save new databases:
 Final_data_merged <- merge(shade_data_merged, open_data_merged, by = c("Month"))
-write.csv(Final_data_merged, file = paste("combined_temps",today(), "csv", sep="." ), row.names = FALSE)
+write.csv(Final_data_merged, file = paste("combined_temps_for_figure_1",today(), "csv", sep="." ), row.names = FALSE)
 
 ####Figure of comparisons between ground temperature in the shade and the open across the seasons####
-combined_temps <- read.csv(file.choose()) ### upload `combined_temps` dataset from Data folder###
+combined_temps <- read.csv("Data/combined_temps_for_figure_1.csv") # upload dataset
 combined_temps$Month <- factor(combined_temps$Month, levels=unique(combined_temps$Month))
 months <- c("January", "February", "March","April","May","June","July","August","September","October","November","December")
 
