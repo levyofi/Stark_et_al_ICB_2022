@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyverse)
 library("plotrix")
 ##Uploading databases:
-shade_temp_data <- read.csv("Data/")
+shade_temp_data <- read.csv("Data/Temperature in the shade (under small bush) across the year - Raw data final.csv")
 open_temp_data <- read.csv("Data/Temperature in open field across the year - Raw data final.csv")
 ##Calculating mean and sd for each month of the year for open and shaded areas:
 shade_temp_mean <- aggregate(shade_temp_data[, 1], list(shade_temp_data$Month), mean)
@@ -15,8 +15,8 @@ names(shade_data_merged)[1] <- "Month"
 names(shade_data_merged)[2] <- "Mean Temperatures under shade (small bush)"
 names(shade_data_merged)[3] <- "Standard error of temps under shade (small bush)"
 
-open_temp_mean <- aggregate(open_temp_data[, 1], list(open_temp_data$Month), mean)
-open_temp_sd <- aggregate(open_temp_data[, 1], list(open_temp_data$Month), sd)
+open_temp_mean <- aggregate(open_temp_data[, 7], list(open_temp_data$Month), mean)
+open_temp_sd <- aggregate(open_temp_data[, 7], list(open_temp_data$Month), sd)
 open_data_merged <- merge(open_temp_mean, open_temp_sd, by = c("Group.1"))
 names(open_data_merged)[1] <- "Month"
 names(open_data_merged)[2] <- "Mean Temperatures in the open field"
