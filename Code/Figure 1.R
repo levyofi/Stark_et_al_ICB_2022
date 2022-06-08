@@ -24,22 +24,7 @@ names(open_data_merged)[3] <- "Standard error of temps in the open field"
 ###Merge and save new databases:
 Final_data_merged <- merge(shade_data_merged, open_data_merged, by = c("Month"))
 write.csv(Final_data_merged, file = paste("combined_temps",today(), "csv", sep="." ), row.names = FALSE)
-#####Statistics#####
-library(ggplot2)
-library(dplyr)
-#Analysis of variance for two factors - Two-Way ANOVA#
-combined_temps <- read.csv(file.choose()) # upload dataset
-str(combined_temps) # check that the structure of the table fits the Anova
-Two_way_anova <- aov(Mean_Temp ~ Microhabitat*Season, data = combined_temps) # run Two-Way Anova without fall and spring
-summary(Two_way_anova) # Check results
-##Creating a table with factors, means and standard deviation##
-data_summary <- group_by(combined_temps, Microhabitat, Season) %>% 
-  summarise(mean=mean(Mean_Temp), sd=sd(Mean_Temp)) %>%
-  arrange(desc(mean))
-print(data_summary)
-###Comparing all the combinations of means by Tukey's test###
-tukey <- TukeyHSD(Two_way_anova)
-print(tukey)
+
 ####Figure of comparisons between ground temperature in the shade and the open across the seasons####
 combined_temps <- read.csv(file.choose()) ### upload `combined_temps` dataset from Data folder###
 combined_temps$Month <- factor(combined_temps$Month, levels=unique(combined_temps$Month))
