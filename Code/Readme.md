@@ -1,2 +1,2 @@
-## These are the codes used for the analysis, modelling and visualization in the study: 
-# **Rocks and vegetation cover improve body condition of desert lizards during both summer and winter**
+## Contains code for the the stattistical analysis and visulaization of the case study (Rocks and vegetation cover improve body condition of desert lizards during both summer and winter). See each subdirectory for README files describing the file contents ##
+
