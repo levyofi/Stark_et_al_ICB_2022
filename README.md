@@ -13,5 +13,5 @@ Microhabitats provide ecological and physiological benefits to animals, shelteri
 # **Repository Directory**:
 ## See the following subdirectory for data and metadata: [link](https://github.com/levyofi/Stark_et_al_ICB_2022/tree/main/Data).
 
-## See the following subdirectory for code: [link](https://github.com/levyofi/Stark_et_al_ICB_2022/tree/main/Code).
+## See the following subdirectory for codes: [link](https://github.com/levyofi/Stark_et_al_ICB_2022/tree/main/Code).
 
