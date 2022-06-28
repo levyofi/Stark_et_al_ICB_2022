@@ -3,3 +3,4 @@
 - `Figure 1.R` :code for the creation of a dataset for ground temp in the shade and open and use it for visualizing figure 1.
 - `Figure 2 - maps.R` :code for the creation of figure 2 using `Data/lizards_Mi_data_Appendix_S1.csv`.
 - `Create_Figs_3-4.R` :code for the creation of figure 3 and 4 using `Data/lizards_Mi_data_Appendix_S1.csv`.
+- `statistical_analysis Folder` :Contains all the codes for the statistical analysis of the study.
