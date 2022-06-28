@@ -1,2 +1,3 @@
 # **Data**
-- `lizards_Mi_data_Appendix_S1.csv` :the life-history lizard data used in the case study.
+- `lizards_Mi_data_Appendix_S1.csv` : The lizard's body condition raw data used in the case study.
+- 
