@@ -50,8 +50,7 @@ for (i in 1:length(sp1Transformed)){
     #calculate rock and veg cover for each of the radiuses
     for (r in wanted_radius){
       veg_percentage = extract(rc_veg, cbind(cords[i,1], cords[i,2]), buffer=r, fun=mean, na.rm=F)
-      rock_percentage = extract(rc_rock, cbind(cords[i,1], cords[i,2]), buffer=r, fun=mean, na.rm=F)
-      draw.circle(cords[i,1], cords[i,2],r)
+      rock_percentage = extract(rc_rock, cbind(cords[i,1], cords[i,2]), buffer=r, fun=mean, na.rm=F)      
       print(paste("individual", veg_data$ID[i], "Has", veg_percentage, rock_percentage, "in radius", r))
       veg_data[i,paste0("fveg",as.character(r))] <- veg_percentage
       veg_data[i,paste0("frock",as.character(r))] <- rock_percentage
