@@ -1,1 +1,1 @@
-- `jags_models.R` : Code containing.....ofir please complete this!!!!!!!!!!!!!!!!!!!!!!
+- `jags_models.R` : Code for running the Bayesian models for Step 2 - understanding the relative effect of vegetation and rock cover on body condition.
