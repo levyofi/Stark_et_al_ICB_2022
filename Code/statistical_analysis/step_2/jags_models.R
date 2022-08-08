@@ -25,7 +25,6 @@ model.file="../Mi model JAGS.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=500000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result 1.txt")			
 print(jagsfit, digits=3)
@@ -43,7 +42,6 @@ model.file="../Mi model JAGS simp1.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=300000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp1.txt")			
 print(jagsfit, digits=3)
@@ -61,7 +59,6 @@ model.file="../Mi model JAGS simp2.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp2.txt")			
 print(jagsfit, digits=3)
@@ -79,7 +76,6 @@ model.file="../Mi model JAGS simp3.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp3.txt")			
 print(jagsfit, digits=3)
@@ -98,7 +94,6 @@ model.file="../Mi model JAGS simp4.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp4.txt")			
 print(jagsfit, digits=3)
@@ -117,7 +112,6 @@ model.file="../Mi model JAGS simp5.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp5.txt")			
 print(jagsfit, digits=3)
@@ -135,7 +129,6 @@ model.file="../Mi model JAGS simp6.txt"
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp6.txt")			
 print(jagsfit, digits=3)
@@ -152,7 +145,6 @@ jags.inits <- function(){
 jagsfit <- jags(data=jags.data, inits=jags.inits, jags.params, 
                 n.iter=400000, model.file=model.file, n.thin=300 )
 
-#save(jagsfit, file="model no ssvs with no autocorr.RData")
 options(width=300, max.print=300000)
 sink("model jags result simp7.txt")			
 print(jagsfit, digits=3)
@@ -178,15 +170,3 @@ sink("Fixed_maps/model jags result simp8.txt")
 print(jagsfit, digits=4)
 sink(NULL)			
 save(jagsfit, file = "Fixed_maps/Mi_model_jagsfit.RData")
-
-load("Fixed_maps/Mi_model_jagsfit.RData")
-p.vals = jagsfit$BUGSoutput$mean$p.val
-pseason=2-p.vals[2]
-prock=p.vals[3]
-pveg=p.vals[4]
-psvl=2-p.vals[5]
-pvegrock= p.vals[6]
-
-div_veg_rock = jagsfit$BUGSoutput$sims.list$div_veg_rock
-
-traceplot(jagsfit, varnames=c("alpha"))
