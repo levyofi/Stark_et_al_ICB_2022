@@ -9,7 +9,6 @@ library(constants)
 library("lme4")
 library(Epi)
 library(emmeans)
-str(Data)
 
 Data_bc <- read.csv("Data/lizards_Mi_data_Appendix_S1.csv")
 
